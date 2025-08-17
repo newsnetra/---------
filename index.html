@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Scrolly Audio Story</title>
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&family=Noto+Serif+Bengali:wght@100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="intro-hero" role="banner" aria-label="Story intro">
+    <div class="hero-wrapper">
+
+      <!-- Brand at top -->
+      <div class="brand">
+        <span class="brand__box">
+          <img src="/assets/photos/netra-interactive-logo.svg" alt="Logo">
+        </span>
+      </div>
+
+      <!-- Content that should be centered -->
+      <div class="hero-content">
+        <h2 class="lede">
+          বাংলাদেশের জুলাই গণঅভ্যুত্থানের সময় শত শত মানুষ নিহত হওয়ার পেছনে তৎকালীন প্রধানমন্ত্রী শেখ হাসিনার দায় কতটা?
+          তার দল আওয়ামী লীগের পক্ষ থেকে দাবি করা হয়েছে, আন্দোলনকারীদের উপর প্রাণঘাতী বলপ্রয়োগের নির্দেশ তিনি দেননি।
+          কিন্তু দেশীয় ও আন্তর্জাতিক সংবাদ মাধ্যমে তার বিভিন্ন ফোনালাপের যেসব রেকর্ডিং প্রকাশিত হয়েছে, তাতে মিলছে ভিন্ন
+          চিত্র।
+        </h2>
+
+        <button id="hero-audio-cta" class="audio-cta muted" type="button" aria-live="polite"
+          aria-label="এই প্রতিবেদনে অডিও শব্দ শোনা যাবে। মিউট করতে চাইলে এখানে ক্লিক করুন।">
+          <span class="audio-cta__icon" aria-hidden="true"></span>
+          <span class="audio-cta__text">এই প্রতিবেদনে অডিও শব্দ শোনা যাবে। মিউট করতে চাইলে এখানে ক্লিক করুন।</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Audio clip 1 -->
+  <div class="soundclip story scrollStoryItem" data-src="/assets/audio/audio1.mp3" data-duration="6" id="story0-0">
+    <div class="soundclip-text" role="button" tabindex="0">
+      <div class="quote-container">
+        <div class="quote-shadow quote-text">
+          <span>“</span><span>সবগুলোকে</span>
+          <span>এরেস্ট</span>
+          <span>করতে</span>
+          <span>বলছিলাম</span>
+          <span>তো।</span><span>”</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio clip 2 -->
+  <div class="soundclip story scrollStoryItem" data-src="/assets/audio/audio4.mp3" data-duration="8" id="story0-1">
+    <div class="soundclip-text" role="button" tabindex="0">
+      <div class="quote-container">
+        <div class="quote-shadow quote-text">
+          <span>“</span><span>এবার</span>
+          <span>আর</span>
+          <span>কোনো</span>
+          <span>কথা</span>
+          <span>নাই।</span>
+          <span>এবার</span>
+          <span>একবারে</span>
+          <span>শুরুত্তে</span>
+          <span>দিবা।</span>
+          <span>বলে</span>
+          <span>দিলাম।</span>
+          <span>...</span>
+          <span>ওরা</span>
+          <span>গলিতে</span>
+          <span>ঘুরতে</span>
+          <span>থাকবে।</span>
+          <span>ওরা</span>
+          <span>শুরুতে ওই</span>
+          <span>অল্প</span>
+          <span>জমায়েত</span>
+          <span>থাকলেই</span>
+          <span>...</span>
+          <span>যা</span>
+          <span>যা</span>
+          <span>করার</span>
+          <span>করতে</span>
+          <span>হবে।</span><span>”</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio clip 3 -->
+  <div class="soundclip story scrollStoryItem" data-src="/assets/audio/audio2.mp3" data-duration="5" id="story0-2">
+    <div class="soundclip-text" role="button" tabindex="0">
+      <div class="quote-container">
+        <div class="quote-shadow quote-text">
+          <span>“</span><span>না,</span>
+          <span>আমার</span>
+          <span>নির্দেশনা</span>
+          <span>দেওয়া</span>
+          <span>আছে,</span>
+          <span>ওপেন</span>
+          <span>নির্দেশনা</span>
+          <span>দিয়ে</span>
+          <span>দিছি আমি।</span>
+          <span>এখন</span>
+          <span>লেথাল</span>
+          <span>ওয়েপন</span>
+          <span>ব্যবহার</span>
+          <span>করবে।</span>
+          <span>যেখানে</span>
+          <span>পাবে</span>
+          <span>সেখানে</span>
+          <span>গুলি</span>
+          <span>করবে।</span><span>”</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <audio id="global-audio-player"></audio>
+  <!-- Global mute/unmute -->
+  <div class="mutebtn-wrapper" aria-live="polite">
+    <button class="mute-button muted" aria-label="Tap to enable sound" title="Tap to enable sound"></button>
+  </div>
+
+  <div class="transition-spacer" aria-hidden="true"></div>
+
+  <header>
+    <div class="section-label">সংবাদ বিশ্লেষণ</div>
+    <h1>শেখ<br>
+      হাসিনার<br>
+      নিজ<br>
+      জবানে
+    </h1>
+    <p class="byline">
+      <span class="author">মিরাজ হোসেন</span>
+    </p>
+
+    <p class="pub-date">
+      <time datetime="2025-08-26">২৬শে আগস্ট ২০২৫</time>
+    </p>
+
+
+  </header>
+
+  <article>
+
+
+    <div class="soundclip23 story23 scrollStoryItem23" data-src="assets/audio/jekhanei-gathering.m4a">
+      <p class="soundclip-text23 line23 g-body">
+        নিজের ফুফাতো ভাই ও ঢাকা দক্ষিণের মেয়র শেখ ফজলে নুর তাপসের সঙ্গে এক ফোনালাপে তিনি ইঙ্গিত দেন যে, বিক্ষোভকারীদের
+        বিরুদ্ধে “উপর থেকে” গুলি করা হবে এখন থেকে। তার ভাষ্য, <strong class="audio-wrap23" role="button"
+          tabindex="0">“যেখানেই গেদারিং দেখবে, সেখানেই উপর থেকে … এখন উপর থেকে করাচ্ছি। অলরেডি শুরু হইসে কয়েকটা
+          জায়গায়। ... শুরু হয়ে গেছে।”</strong> এই আলাপে উপর থেকে কী
+        করাচ্ছেন, সেই বিষয়ে অস্পষ্টতা রাখলেও অন্যান্য ক্ষেত্রে তিনি বেশ স্পষ্টই ছিলেন।
+      </p>
+
+
+
+      <audio preload="auto"></audio>
+    </div>
+
+  </article>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('global-audio-player');
+      let activeClip = null;
+      let activeLetters = [];
+      let lastOnIndex = -1;
+
+      const getQuoteTextEl = clip => clip.querySelector('.quote-text');
+
+      // Ensure spans have class="letter"
+      document.querySelectorAll('.quote-text').forEach(q => {
+        q.querySelectorAll(':scope > span').forEach(s => s.classList.add('letter'));
+      });
+
+      // Tidy only; DO NOT clear .letter.on here
+      function resetClip(clip) {
+        clip.classList.remove('playing', 'paused');
+        const qt = getQuoteTextEl(clip);
+        if (qt) qt.style.setProperty('--pct', '0%');
+      }
+
+      function setReveal(progress) {
+        if (!activeLetters.length) return;
+        const total = activeLetters.length;
+        const target = Math.max(-1, Math.min(total - 1, Math.floor(progress * total) - 1));
+        for (let i = lastOnIndex + 1; i <= target; i++) {
+          if (activeLetters[i]) activeLetters[i].classList.add('on');
+        }
+        lastOnIndex = target;
+      }
+
+      function playClip(clip) {
+  // respect global mute if available
+  if (window.Mute && typeof window.Mute.isMuted === 'function') {
+    audio.muted = window.Mute.isMuted();
+  }
+
+  const src = clip.dataset.src || clip.dataset.clip;
+  if (!src) return;
+
+  // If switching, tidy old one (do not clear its letters)
+  if (activeClip && activeClip !== clip) {
+    audio.pause();
+    resetClip(activeClip);
+  }
+
+  const qt = getQuoteTextEl(clip);
+
+  // Start THIS clip fresh (so sweep can replay)
+  if (qt) qt.querySelectorAll('span.letter.on').forEach(s => s.classList.remove('on'));
+
+  activeLetters = qt ? Array.from(qt.querySelectorAll('span.letter')) : [];
+  lastOnIndex = -1;
+
+  const abs = new URL(src, location.href).href;
+  if (audio.src !== abs) {
+    audio.src = src;
+    audio.load();
+  }
+
+  const tryPlay = () => audio.play().then(() => {
+    activeClip = clip;
+    clip.classList.add('playing');
+    clip.classList.remove('paused');
+    if (qt) qt.style.setProperty('--pct', '0%');
+    setReveal(0);
+    // mark that we successfully started (possibly muted)
+    clip.dataset.autoplayStarted = '1';
+  });
+
+  // First attempt: play with current mute state (may fail if not muted & no gesture)
+  tryPlay().catch(err => {
+  if (err && (err.name === 'NotAllowedError' || err.code === 0)) {
+    audio.muted = true;
+    tryPlay().then(() => {
+      clip.dataset.startedMutedByIO = '1';
+
+      // ⬇️ keep global state in sync with what actually happened
+      if (window.Mute && typeof window.Mute.isMuted === 'function' && !window.Mute.isMuted()) {
+        document.querySelector('.mutebtn-wrapper .mute-button')?.click();
+      }
+    }).catch(console.error);
+  } else {
+    console.error(err);
+  }
+});
+
+}
+
+
+      function pauseIfActive(clip) {
+        if (activeClip === clip) {
+          audio.pause();
+          clip.classList.remove('playing');
+          clip.classList.add('paused');
+        }
+      }
+
+      // Click/keyboard on any .soundclip
+      document.querySelectorAll('.soundclip .soundclip-text').forEach(btn => {
+        const clip = btn.closest('.soundclip');
+        const toggle = () => {
+          if (activeClip === clip) {
+            if (audio.paused) {
+              audio.play().catch(console.error);
+              clip.classList.add('playing');
+              clip.classList.remove('paused');
+            } else {
+              pauseIfActive(clip);
+            }
+          } else {
+            playClip(clip);
+          }
+        };
+        btn.addEventListener('click', toggle);
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+      });
+
+      // Progress + letters
+      audio.addEventListener('timeupdate', () => {
+        if (!activeClip || audio.paused) return;
+
+        const qt = getQuoteTextEl(activeClip);
+        const realDur = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : null;
+        const fallbackDur = +(activeClip.dataset.duration || 0) || null;
+        const dur = realDur || fallbackDur;
+        if (!dur) return;
+
+        const progress = Math.max(0, Math.min(1, audio.currentTime / dur));
+        if (qt) qt.style.setProperty('--pct', (progress * 100) + '%');
+        setReveal(progress);
+      });
+
+      // On end: force ALL letters to 'on' and leave them as-is
+      audio.addEventListener('ended', () => {
+        if (!activeClip) return;
+
+        const qt = activeClip.querySelector('.quote-text');
+        if (qt) {
+          qt.querySelectorAll('span.letter').forEach(s => s.classList.add('on'));
+          qt.style.setProperty('--pct', '100%');
+        }
+
+        // leave letters on; just clear control flags
+        activeClip.classList.remove('paused');
+        activeClip.classList.remove('playing');
+        activeClip = null;
+        activeLetters = [];
+        lastOnIndex = -1;
+      });
+
+      // === IntersectionObserver for scrolly behavior ===
+      // === IntersectionObserver for scrolly behavior (auto-start) ===
+const enterTimers = new WeakMap();
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const clip = entry.target;
+
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+      // Debounce a bit so quick flicks don't spam play()
+      clearTimeout(enterTimers.get(clip));
+      const t = setTimeout(() => playClip(clip), 80);
+      enterTimers.set(clip, t);
+    } else if (entry.intersectionRatio < 0.25) {
+      // Pauses when meaningfully leaving viewport; letters remain on
+      clearTimeout(enterTimers.get(clip));
+      pauseIfActive(clip);
+    }
+  });
+}, {
+  root: null,
+  threshold: [0, 0.25, 0.6, 1],
+  rootMargin: '0px 0px -10% 0px'
+});
+
+document.querySelectorAll('.soundclip.story.scrollStoryItem').forEach(el => io.observe(el));
+
+      });
+  </script>
+
+
+  <script>
+    /* Global Mute Controller: applies to ALL <audio>, blocks autoplay while muted */
+    /* Global Mute Controller: applies to ALL <audio>, blocks autoplay while muted */
+    (() => {
+      const btn = document.querySelector('.mutebtn-wrapper .mute-button');
+      const globalAudio = document.getElementById('global-audio-player');
+
+      // Single source of truth — start UNMUTED
+      let muted = true;
+
+      function applyMuteToAll() {
+        document.querySelectorAll('audio').forEach(a => { a.muted = muted; });
+        btn?.classList.toggle('muted', muted);
+        btn?.setAttribute('aria-label', muted ? 'Tap to enable sound' : 'Tap to mute sound');
+        btn?.setAttribute('title', muted ? 'Tap to enable sound' : 'Tap to mute sound');
+      }
+
+      // Try to unlock audio after a user gesture
+      async function unlockAutoplay() {
+        if (!globalAudio) return;
+        try { await globalAudio.play(); globalAudio.pause(); } catch (_) { }
+      }
+
+      function toggleMute() {
+        muted = !muted;
+        applyMuteToAll();
+        if (!muted) unlockAutoplay();
+      }
+
+      // Expose read-only getter for other scripts
+      window.Mute = {
+        isMuted: () => muted,
+        nudge: () => { btn?.classList.add('pulse'); setTimeout(() => btn?.classList.remove('pulse'), 550); }
+      };
+
+      // Init
+      applyMuteToAll();
+      btn?.addEventListener('click', toggleMute);
+
+      // One-time gesture unlock (helps iOS/Safari)
+      const onceUnlock = () => { unlockAutoplay(); window.removeEventListener('pointerdown', onceUnlock); };
+      window.addEventListener('pointerdown', onceUnlock, { once: true, passive: true });
+
+      // Keep new <audio> nodes in sync
+      const mo = new MutationObserver(muts => {
+        for (const m of muts) {
+          m.addedNodes.forEach(n => {
+            if (n.nodeType !== 1) return;
+            if (n.tagName === 'AUDIO') n.muted = muted;
+            n.querySelectorAll?.('audio').forEach(a => a.muted = muted);
+          });
+        }
+      });
+      mo.observe(document.body, { childList: true, subtree: true });
+    })();
+
+  </script>
+
+  <script>
+    (() => {
+      'use strict';
+
+      function initClip(el) {
+        const audio = el.querySelector('audio');
+        const para = el.querySelector('.soundclip-text23.line23');
+        const trigger = el.querySelector('.audio-wrap23');
+        if (!audio || !para || !trigger) return;
+
+        // Default UI: PLAY state
+        trigger.classList.remove('playing23');
+        audio.pause();
+        audio.currentTime = 0;
+        trigger.style.setProperty('--pct', '0%');
+
+        // Use data-audio or data-src
+        audio.src = el.dataset.audio || el.dataset.src || '';
+
+        // A11y: make text clickable/keyboard-able
+        trigger.setAttribute('role', 'button');
+        trigger.setAttribute('tabindex', '0');
+
+        const setProgress = () => {
+          const d = audio.duration || 1;
+          const pct = Math.min(1, Math.max(0, audio.currentTime / d)) * 100;
+          trigger.style.setProperty('--pct', pct.toFixed(3) + '%');
+        };
+
+        function tick() {
+          setProgress();
+          if (!audio.paused && !audio.ended) requestAnimationFrame(tick);
+        }
+
+        function play() {
+          if (window.Mute && typeof window.Mute.isMuted === 'function') {
+            audio.muted = window.Mute.isMuted();
+          }
+          audio.play().then(() => {
+            trigger.classList.add('playing23');
+            requestAnimationFrame(tick);
+          }).catch(() => { });
+        }
+
+        function pause() {
+          audio.pause();
+          trigger.classList.remove('playing23');
+        }
+
+        function toggle() {
+          if (audio.paused) play(); else pause();
+        }
+
+        trigger.addEventListener('click', toggle);
+        trigger.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+
+        audio.addEventListener('ended', () => {
+          trigger.classList.remove('playing23');
+          trigger.style.setProperty('--pct', '0%');
+        });
+
+        // Keep progress correct on seek/metadata load
+        audio.addEventListener('timeupdate', setProgress);
+        audio.addEventListener('loadedmetadata', setProgress);
+      }
+
+      document.querySelectorAll('.soundclip23.story23.scrollStoryItem23').forEach(initClip);
+    })();
+  </script>
+
+
+  <script>
+    (function () {
+      const cta = document.getElementById('hero-audio-cta');
+
+      function getMuteButton() { return document.querySelector('.mute-button'); }
+
+      function currentMuted() {
+        if (window.Mute && typeof window.Mute.isMuted === 'function') return window.Mute.isMuted();
+        const btn = getMuteButton();
+        return btn ? btn.classList.contains('muted') : false;
+      }
+
+      function syncCTA() {
+        const muted = currentMuted();
+        cta.classList.toggle('muted', muted);
+        const text = cta.querySelector('.audio-cta__text');
+        if (text) {
+          text.textContent = muted
+            ? 'অডিও শুনতে চাইলে ক্লিক করুন'
+            : 'অডিও বন্ধ করতে চাইলে ক্লিক করুন';
+        }
+        cta.setAttribute('aria-label', muted ? 'Click to unmute.' : 'Click to mute.');
+      }
+
+      function toggleGlobalMute() {
+        if (window.Mute && typeof window.Mute.toggle === 'function') {
+          window.Mute.toggle();
+          syncCTA();
+          return;
+        }
+        const btn = getMuteButton();
+        if (btn) { btn.click(); }
+        syncCTA();
+      }
+
+      cta.addEventListener('click', toggleGlobalMute);
+
+      const btn = getMuteButton();
+      if (btn) {
+        const mo = new MutationObserver(syncCTA);
+        mo.observe(btn, { attributes: true, attributeFilter: ['class'] });
+      }
+
+      // --- NEW: only switch invert state when passing header top ---
+      (function invertControl() {
+        const header = document.querySelector('header');
+        const button = btn || getMuteButton();
+        if (!header || !button) return;
+
+        function update() {
+          const hRect = header.getBoundingClientRect();
+          const headerTop = hRect.top + window.scrollY; // absolute top
+          const passedHeader = window.scrollY >= headerTop + header.offsetHeight;
+          const aboveHeader = window.scrollY < headerTop;
+
+          if (aboveHeader) {
+            button.classList.remove('no-invert'); // initial: inverted
+          } else if (passedHeader) {
+            button.classList.remove('no-invert'); // below header: inverted again
+          } else {
+            button.classList.add('no-invert');    // while inside header: no invert
+          }
+        }
+
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      })();
+      // --- END NEW ---
+
+      syncCTA();
+    })();
+  </script>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,501 @@
+    /* =========================
+   Base + Header
+   ========================= */
+html {
+    background-color: #000;
+}
+    * {
+        box-sizing: border-box;
+    }
+
+    /* ===== Hero layout ===== */
+
+    @font-face {
+        font-family: 'AlinurTatsama';
+        src: url('/assets/fonts/AlinurTatsama/Unicode/Li Alinur Tatsama Unicode.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'AlinurTatsama';
+        src: url('/assets/fonts/AlinurTatsama/Unicode/Li Alinur Tatsama Unicode Italic.ttf') format('truetype');
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: 'Letterpress';
+        src: url('/assets/fonts/Li-Subha-Letterpress-Unicode.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+    @font-face {
+        font-family: 'Insaaf';
+        src: url('/assets/fonts/Li-Insaaf.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sangbadpatra';
+        src: url('/assets/fonts/Li-Alinur-Sangbadpatra-Unicode.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* Example usage */
+    body {
+        font-family: 'AlinurTatsama', serif;
+        margin: 0;
+    }
+
+    .intro-hero {
+        background: #000;
+
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .hero-wrapper {
+        min-height: 100vh;
+        max-width: 715px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-sizing: border-box;
+        color: rgba(255, 255, 255, .92);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Brand always pinned to top */
+
+    /* The rest gets centered */
+    .hero-content {
+        flex: 1;
+        /* take remaining height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* center vertically */
+        align-items: center;
+        /* center horizontally */
+        gap: 2rem;
+        /* space between lede and button */
+    }
+
+
+    /* ===== Logo placeholder ===== */
+    .brand {
+        height: 20px;
+        display: grid;
+        place-items: center;
+        margin-top: 0.5rem;
+        /* add breathing room from very top */
+    }
+
+    .brand__box {
+        display: inline-grid;
+        place-items: center;
+        width: 160px;
+        height: 30px;
+        border: 1px solid rgba(255, 255, 255, .35);
+        border-radius: 4px;
+        font: 600 12px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        letter-spacing: .12em;
+        color: rgba(255, 255, 255, .8);
+        filter: invert(1);
+    }
+
+    /* ===== Lede ===== */
+    .lede {
+        max-width: 950px;
+        margin: 10vh 0 12vh;
+        text-align: center;
+        font-family: 'Noto Serif Bengali', serif;
+        /* swap for your Bengali serif if needed */
+        font-weight: 100;
+        font-size: 20px;
+        line-height: 1.25;
+        letter-spacing: .01em;
+        text-shadow: 0 0 1px rgba(0, 0, 0, .22);
+    }
+
+    /* ===== Audio CTA (centered under lede) ===== */
+
+    .audio-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        border: 0;
+        background: none;
+        color: yellow;
+        font: 500 15px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        cursor: pointer;
+        transition: color .15s ease, opacity .15s ease;
+    }
+
+    .audio-cta:hover {
+        color: rgba(255, 255, 255, .82);
+    }
+
+    .audio-cta:focus-visible {
+        outline: 2px solid #4cb9f8;
+        outline-offset: 4px;
+        border-radius: 6px;
+    }
+
+    /* Icon built as two stacked layers to avoid position shift */
+
+
+    .audio-cta__icon {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 18px;
+        background: no-repeat center / 100% 200%;
+        background-image: url("/assets/audio/speaker-sprite.svg");
+        /* same file */
+        /* sprite: bottom = ON, top = OFF */
+        background-position: top;
+        /* default OFF */
+        filter: invert(1);
+        /* optional to match your dark header */
+    }
+
+
+    /* States mirror your existing logic */
+    .audio-cta.muted .audio-cta__icon {
+        background-position: top;
+        /* OFF */
+        margin-bottom: 6px;
+    }
+
+    .audio-cta:not(.muted) .audio-cta__icon {
+        background-position: bottom;
+        /* ON */
+        margin-top: 6px;
+    }
+
+
+
+    /* Small screens spacing */
+    @media (max-width: 520px) {
+        .lede {
+            margin: 8vh 0 10vh;
+        }
+    }
+
+    .transition-spacer {
+        height: 50vh;
+        background: linear-gradient(to bottom, black, gray);
+    }
+
+
+
+    /* Ensure header sits above the veil */
+    header {
+        background: linear-gradient(to bottom, gray, white);
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        text-align: center;
+        font-family: 'AlinurTatsama', "Times New Roman", Times, serif;
+    }
+
+
+    header .section-label {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        font-family: 'Nato Sans Bengali', Helvetica, sans-serif;
+    }
+
+    header h1 {
+        font-family: 'AlinurTatsama', Times, serif;
+        font-weight: 900;
+        font-size: clamp(2rem, 6vw, 4rem);
+        line-height: 1.1;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    header .byline,
+    header .author,
+    header .pub-date {
+        font-family: 'Nato Sans Bengali', Helvetica, sans-serif;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    header .byline {
+        font-weight: 700;
+        margin-top: 1.5rem;
+        margin-bottom: .25rem;
+    }
+
+    header .description {
+        margin-bottom: .75rem;
+        color: #222;
+    }
+
+    header .pub-date {
+        color: #333;
+    }
+
+    article {
+        
+        background-color: white;
+    }
+
+    article p {
+        max-width: 500px;
+        margin: auto;
+        font-size: 14px;
+        font-family: 'Noto Serif Bengali';
+        font-weight: 300;
+        line-height: 1.5;
+
+    }
+
+    /* =========================
+   Scrolly full-screen quotes
+   (".soundclip.story.scrollStoryItem")
+   ========================= */
+    .soundclip.story.scrollStoryItem {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+        color: rgba(255, 255, 255, .92);
+        padding: 0 1rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Soft vignette */
+    .soundclip.story.scrollStoryItem::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .soundclip .quote-container {
+        max-width: 475px;
+        /* a bit wider for Bengali */
+        text-align: center;
+    }
+
+    .soundclip .quote-text {
+        max-width: calc(100% - 40px);
+        font-family: 'Noto Serif Bengali', "SolaimanLipi", serif;
+        font-weight: 400;
+        font-size: clamp(1.1rem, 3vw, 3rem);
+        line-height: 1.4;
+        letter-spacing: 0.01em;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        text-shadow: 0 0 1px rgba(0, 0, 0, .25);
+    }
+
+    /* Letter-reveal baseline */
+    .soundclip .quote-text .letter {
+        opacity: .18;
+        filter: grayscale(60%);
+        transform: translateY(.06em);
+        transition: opacity .06s linear, filter .06s linear, transform .06s linear;
+        will-change: opacity, transform;
+    }
+
+    /* Letters turned on while playing (JS toggles .on) */
+    .soundclip.playing .quote-text .letter.on {
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+
+    /* Keyboard focus for the clickable block */
+    .soundclip .soundclip-text[role="button"]:focus-visible {
+        outline: 2px solid #4cb9f8;
+        outline-offset: 4px;
+        border-radius: 6px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .soundclip.story.scrollStoryItem::before {
+            background: none;
+        }
+
+        .soundclip .quote-text .letter {
+            transition: none;
+        }
+    }
+
+    /* =========================
+   Inline phrase player
+   (".soundclip23" + ".audio-wrap23")
+   ========================= */
+    .soundclip23.story23.scrollStoryItem23 {
+        display: block;
+        font: 400 28px/1.35 Georgia, "Times New Roman", serif;
+        color: #222;
+    }
+
+    @media (max-width: 520px) {
+        .soundclip23.story23.scrollStoryItem23 {
+            font-size: 22px;
+        }
+    }
+
+    .soundclip-text23.line23 {
+        position: relative;
+        z-index: 0;
+        padding-bottom: 0;
+    }
+
+
+    /* Seamless inline trigger with an internal icon slot */
+    .audio-wrap23 {
+        --pct: 0%;
+        /* progress 0–100% set by JS */
+        --hl: #FFF8CBF5;
+        /* highlight color */
+        --bg: transparent;
+        /* base bg behind text */
+        --icon-pad: 1.05em;
+        /* room for the icon */
+
+        position: relative;
+        display: inline;
+        /* important: keep inline to avoid seams */
+        padding-left: var(--icon-pad);
+        margin: 0;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+        text-decoration-color: #dfdfdf;
+        font-weight: inherit;
+        line-height: inherit;
+        cursor: pointer;
+        vertical-align: baseline;
+        /* One gradient “fills” to --pct; clip to content so it starts after the icon */
+        background:
+            linear-gradient(90deg,
+                var(--hl) 0%, var(--hl) var(--pct),
+                var(--bg) var(--pct), var(--bg) 100%);
+        background-clip: content-box;
+        background-origin: content-box;
+
+    }
+
+    .audio-wrap23:hover {
+        text-decoration-color: rgba(255, 236, 119, 0.96);
+    }
+
+    /* Icon lives inside the padding so it never pushes text around */
+    .audio-wrap23::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.35em;
+        /* tweak per font */
+        width: 0.9em;
+        height: 0.9em;
+        opacity: .6;
+        background: no-repeat center/contain url('/assets/audio/player-on.svg');
+        pointer-events: none;
+    }
+
+    .audio-wrap23.playing23::before {
+        background-image: url('/assets/audio/player-pause.svg');
+    }
+
+    /* Optional focus style */
+    .audio-wrap23:focus-visible {
+        outline: 2px solid #4cb9f8;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    /* Remove ALL the .hl23 / .seg23 styles — no longer needed */
+
+
+
+    /* Mute button placement */
+    .mutebtn-wrapper {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 1000;
+    }
+
+  
+    /* Icon: bottom = sound ON, top = sound OFF when .muted is present */
+    .mute-button {
+        width: 34px;
+        height: 34px;
+        border: 0;
+        background: no-repeat center / 100% 200%;
+        background-image: url("/assets/audio/speaker-sprite.svg");
+        /* sprite: bottom=on, top=off */
+        background-position: bottom;
+        cursor: pointer;
+        opacity: .9;
+        border-radius: 6px;
+        filter: invert(1);
+        transition: filter .2s ease;
+    }
+
+  .mute-button.no-invert { filter: none; }
+
+    .mute-button:hover {
+        opacity: 1;
+    }
+
+    .mute-button:focus-visible {
+        outline: 2px solid #4cb9f8;
+        outline-offset: 2px;
+    }
+
+    .mute-button.muted {
+        background-position: top;
+        margin-bottom: 16px;
+    }
+
+    /* Optional: invert on dark headers/hero if needed */
+    .g-top .mute-button {
+        filter: invert(1);
+    }
+
+    /* Nudge animation when user tries to play while muted */
+    .mute-button.pulse {
+        animation: mutePulse .5s ease;
+    }
+
+
+
+    @keyframes mutePulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.12);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* always brighten any letter that's .on */
+    .soundclip .quote-text .letter.on {
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }

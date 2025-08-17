@@ -407,12 +407,12 @@ html {
         width: 0.9em;
         height: 0.9em;
         opacity: .6;
-        background: no-repeat center/contain url('./assets/audio/player-on.svg');
+        background: no-repeat center/contain url('../assets/audio/player-on.svg');
         pointer-events: none;
     }
 
     .audio-wrap23.playing23::before {
-        background-image: url('./assets/audio/player-pause.svg');
+        background-image: url('../assets/audio/player-pause.svg');
     }
 
     /* Optional focus style */

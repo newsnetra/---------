@@ -471,7 +471,7 @@ background-color: #000;
         height: 34px;
         border: 0;
         background: no-repeat center / 100% 200%;
-        background-image: url("./assets/audio/speaker-sprite.svg");
+        background-image: url("../assets/audio/speaker-sprite.svg");
         /* sprite: bottom=on, top=off */
         background-position: bottom;
         cursor: pointer;

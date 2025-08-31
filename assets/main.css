@@ -259,19 +259,29 @@ background-color: #000;
     }
 
     article {
-
         background-color: white;
         width: 100%
     }
 
     article p {
-        max-width: 500px;
+        max-width: 550px;
         margin: auto;
-        font-size: 17px;
-        font-family: 'Noto Serif Bengali';
+        font-size: 1.2rem;
+        font-family: "Noto Sans Bengali", serif;
         font-weight: 350;
-        line-height: 1.5;
+        line-height: 1.6;
         margin-bottom: 20px;
+        display: block;
+    }
+
+    article p:last-of-type {
+  margin-bottom: 0;
+}
+
+    h2 {
+        max-width: 550px;
+        margin: 20px auto;
+        font-family: "Tiro Bangla", serif;
     }
 
 @media (max-width: 500px) {
@@ -368,8 +378,9 @@ background-color: #000;
    ========================= */
     .soundclip23.story23.scrollStoryItem23 {
         display: block;
-        font: 400 28px/1.35 Georgia, "Times New Roman", serif;
+       
         color: #222;
+        margin-bottom: 20px;
     }
 
     @media (max-width: 520px) {
@@ -535,3 +546,215 @@ background-color: #000;
 
 
    
+
+
+
+#footer {
+    background-color: #f9f9f9;
+    color: #000;
+    padding: 40px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#footer-inner {
+    max-width: 618px;
+    margin: 0 auto;
+}
+
+.logo {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    display: block;
+    margin-bottom: 10px;
+    max-width: 150px;
+    height: 100%;
+    margin: auto;
+}
+
+
+
+.logo p {
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.9;
+    color: black;
+    margin: 10px;
+    text-align: center;
+    
+}
+
+.lists {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 30px;
+    margin-top: 30px;
+    color: black;
+    font-family: 'Noto Serif Bengali', 'Courier New', Courier, monospace;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.list {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+
+}
+
+.list h3 {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.list ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.list ul li {
+    margin-bottom: 5px;
+}
+
+
+.list ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    background: none;
+}
+
+.list ul li a:hover {
+    opacity: 1;
+}
+
+.social-icons a {
+    background: none;
+    
+}
+
+.social-icons-m a {
+    background: none;
+}
+.credits {
+    background-color: #fff;
+    padding: 3rem 0rem;
+}
+.credits p {
+    font-family: "Noto Serif Bengali", "Courier New", monospace;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #999;
+    max-width: 550px;
+    margin:  auto;
+    padding: 1rem;
+    border-top: 1px solid #333;
+    text-align: center;
+    
+}
+
+.dropcap {
+  float: left;
+  font-family: 'Tiro Bangla', serif;
+  font-size: 4rem;
+  font-weight: normal;
+  line-height: 1;
+  padding: 0.4rem 0.6rem;
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+  border-style: double;
+  border-width: 4px;
+
+  /* Different colours for different sides */
+  border-top-color: #dfdfdf;
+  border-right-color: rgba(255, 236, 119, 0.96);
+  border-bottom-color: #dfdfdf;
+  border-left-color: rgba(255, 236, 119, 0.96);
+
+  display: inline-block;
+}
+
+
+a {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #dfdfdf;   /* subtle greyish line */
+  text-decoration-thickness: 3px;   /* thinner by default */
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.3s ease, text-decoration-thickness 0.3s ease;
+}
+
+a:hover {
+  text-decoration-color: rgba(255, 236, 119, 0.96);   /* bright skyblue */
+  text-decoration-thickness: 4px;   /* thicker underline */
+}
+
+
+
+
+.section-label a, .author a {
+    text-decoration: none;
+}
+.brush {
+  display: inline;
+  background: linear-gradient(120deg, rgba(255, 236, 119, 0.96) 0%, rgba(255, 236, 119, 0.96) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 60%;
+  background-position: 0 70%;   /* positions the stroke under the baseline */
+  padding: 0.1em 0.2em;
+}
+
+/* Layout & typography (safe) */
+.dialogue {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.25rem;
+  max-width: 550px;
+  margin: 2rem auto;
+  font-family: 'Noto Serif Bengali', serif;
+}
+
+.dialogue .left {
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: right;
+  color: #444;
+  padding-right: .5rem;
+  border-right: 2px solid #e0e0e0;
+  
+}
+
+.dialogue .right {
+  padding-left: 1rem;        /* visual gap from divider */
+  line-height: 1.75;
+  color: #111;
+}
+
+/* DO NOT change background/padding/display on .audio-wrap23 itself */
+.dialogue .right .audio-wrap23 {
+  position: relative;         /* create a stacking context for the panel */
+  z-index: 0;
+}
+
+.left div {
+    margin: 40px 0px;
+}
+/* Optional subtle state changes, still not touching background of the text */
+.dialogue .right .audio-wrap23:hover::after { opacity: 1; }
+.dialogue .right .audio-wrap23.playing23::after { opacity: 1; }
+
+/* Tidy line breaks inside the single block (keeps your <br> approach) */
+.dialogue .right .audio-wrap23 br { line-height: 2; }
+

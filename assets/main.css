@@ -686,7 +686,7 @@ a:hover {
 .section-label a, .author a {
     text-decoration: none;
 }
-.brush {
+.brush, .section-label {
   display: inline;
   background: linear-gradient(120deg, #FFF8CBF5 0%, rgba(255, 236, 119, 0.96) 100%);
   background-repeat: no-repeat;

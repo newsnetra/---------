@@ -17,39 +17,18 @@
 
     @font-face {
         font-family: 'AlinurTatsama';
-        src: url('./assets/fonts/AlinurTatsama/Unicode/Li Alinur Tatsama Unicode.ttf') format('truetype');
+        src: url('/assets/fonts/AlinurTatsama/Unicode/Li Alinur Tatsama Unicode.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
 
     @font-face {
         font-family: 'AlinurTatsama';
-        src: url('./assets/fonts/AlinurTatsama/Unicode/Li Alinur Tatsama Unicode Italic.ttf') format('truetype');
+        src: url('/assets/fonts/AlinurTatsama/Unicode/Li Alinur Tatsama Unicode Italic.ttf') format('truetype');
         font-weight: normal;
         font-style: italic;
     }
-
-    @font-face {
-        font-family: 'Letterpress';
-        src: url('./assets/fonts/Li-Subha-Letterpress-Unicode.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-
-    @font-face {
-        font-family: 'Insaaf';
-        src: url('./assets/fonts/Li-Insaaf.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Sangbadpatra';
-        src: url('./assets/fonts/Li-Alinur-Sangbadpatra-Unicode.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
+    
 
     /* Example usage */
     body {

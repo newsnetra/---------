@@ -122,7 +122,7 @@
         max-width: 950px;
         margin: 10vh 0 12vh;
         text-align: center;
-        font-family: 'Noto Serif Bengali', serif;
+        font-family: 'Tiro Bangla', serif;
         /* swap for your Bengali serif if needed */
         font-weight: 100;
         font-size: clamp(1rem, 3vw, 3rem);
@@ -144,7 +144,7 @@ background-color: #000;
         border: 0;
         background: none;
         color: yellow;
-        font: 500 15px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        font-family: 'AlinurTatsama';
         cursor: pointer;
         transition: color .15s ease, opacity .15s ease;
     }
@@ -550,7 +550,7 @@ background-color: #000;
 
 
 #footer {
-    background-color: #f9f9f9;
+    background: linear-gradient(0deg, #FFF8CBF5 0%, rgba(255, 236, 119, 0.96) 100%);
     color: #000;
     padding: 40px;
     margin: auto;
@@ -709,7 +709,7 @@ a:hover {
 }
 .brush {
   display: inline;
-  background: linear-gradient(120deg, rgba(255, 236, 119, 0.96) 0%, rgba(255, 236, 119, 0.96) 100%);
+  background: linear-gradient(120deg, #FFF8CBF5 0%, rgba(255, 236, 119, 0.96) 100%);
   background-repeat: no-repeat;
   background-size: 100% 60%;
   background-position: 0 70%;   /* positions the stroke under the baseline */
@@ -748,13 +748,28 @@ a:hover {
   z-index: 0;
 }
 
-.left div {
-    margin: 40px 0px;
+.inan div {
+    margin: 55px 0px;
 }
-/* Optional subtle state changes, still not touching background of the text */
-.dialogue .right .audio-wrap23:hover::after { opacity: 1; }
-.dialogue .right .audio-wrap23.playing23::after { opacity: 1; }
 
-/* Tidy line breaks inside the single block (keeps your <br> approach) */
-.dialogue .right .audio-wrap23 br { line-height: 2; }
+/* First speaker */
+.left div:first-child {
+  font-weight: bold;
+}
 
+/* Second speaker */
+.inan div:nth-child(2) {
+    margin: 100px 0px 0px;
+background: linear-gradient(120deg, rgba(255, 236, 119, 0.96) 0%, rgba(255, 236, 119, 0.96) 100%);
+}
+
+
+
+.inu div:first-child {
+    margin: 30px 0px;
+}
+
+.inu div:nth-child(2) {
+    background: linear-gradient(120deg, rgba(255, 236, 119, 0.96) 0%, rgba(255, 236, 119, 0.96) 100%);
+    margin: 50px 0px;
+}

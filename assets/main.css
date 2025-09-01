@@ -171,15 +171,6 @@ background-color: #000;
 
 
 
-    /* Small screens spacing */
-    @media (max-width: 520px) {
-        .lede {
-            margin: 8vh 0 10vh;
-        }
-
-
-    }
-
     .transition-spacer {
         height: 50vh;
          background: linear-gradient(to bottom, #000000 0%, var(--junction) 100%);
@@ -264,13 +255,22 @@ background-color: #000;
     }
 
 @media (max-width: 500px) {
-  article p {
-    max-width: 95%;
+  article p, h2 {
+    max-width: 92%;
   }
 
   .transition-spacer {
     height: 20vh;
   }
+
+    .lede {
+            margin: 8vh 0 10vh;
+        }
+
+        .dialogue {
+            font-size: 0.9rem;
+        }
+
 }
 
 

@@ -273,7 +273,7 @@
           </strong>
         </div>
       </div>
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
 
     <p>অর্থাৎ শিক্ষার্থীদের উপর ছাত্রলীগের আক্রমণের নির্দেশনাও আসে সরাসরি হাসিনার কাছ থেকে।</p>
@@ -294,7 +294,7 @@
           tabindex="0">“সবগুলিকে অ্যারেস্ট করতে বলসি রাত্রে।
           র‍্যাব, ডিজিএফআই — সবাইকে বলা হইসে যে যেখান থেকে যে কয়টা পারবা ধরে ফেল।”</strong>
       </p>
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
     <p>কিন্তু তাপস তাতে ভরসা পাননি। হাসিনার সরাসরি নির্দেশনা চেয়ে তিনি বলেন, “আপনার নির্দেশনা লাগবে।”
       কীসের জন্য হাসিনার নির্দেশনা প্রয়োজন, সেই ব্যাপারে তাপস খোলাসা করে কিছু না বললেও হাসিনা স্পষ্টভাবে বুঝতে পারেন।
@@ -307,7 +307,7 @@
           দিয়ে দিসি একদম। এখন লেথাল উইপেন ব্যবহার করবে।
           যেখানে পাবে সোজা গুলি করবে। ওদের বলে দেয়া আছে।”</strong>
       </p>
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
 
     <p>প্রাণঘাতী অস্ত্র ব্যবহারে হাসিনার ওই অনুমোদন ও নির্দেশনার পর বাড়তে থাকে লাশের মিছিল। পরদিন মোট ১৭৯ জন <a href="https://interactive.netra.news/monsoon-massacre/bangla/">নিহতের সংখ্যা</a> নেত্র নিউজ
@@ -319,7 +319,7 @@
           গ্যাদারিং দেখবে সেখানেই উপর থেকে ... এখন উপর থেকে করাচ্ছি।
           অলরেডি শুরু হইছে কয়েকটা জায়গায়। শুরু হয়ে গেছে।” </strong>
       </p>
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
 
 
@@ -329,7 +329,7 @@
         দেন তিনি: <strong class="audio-wrap23" role="button" tabindex="0">“ড্রোন দিয়ে ছবি নিচ্ছি। আর হেলিকপ্টারে ইয়ে
           হচ্ছে, মানে কয়েক জায়গায়...”</strong>
       </p>
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
 
 
@@ -342,7 +342,7 @@
           করা
           হবে। র‍্যাবের হেলিকপ্টার যাচ্ছে। উপর দিয়ে মারবে।” </strong>
       </p>
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
 
 
@@ -373,7 +373,7 @@
         </div>
       </div>
 
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
 
 
@@ -402,7 +402,7 @@
           tabindex="0">“ব্রিটিশ হাই কমিশনার বোধ হয় জিজ্ঞেস করসে যে “এটা কবে ঠিক
           হবে?” এটা তোমরা বল আন্দোলন, কারফিউয়ে পোড়াইসে। এটা ঠিক হইতে অনেক সময় লাগবে।”</strong>
       </p>
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
 
     <p>সরকারিভাবে ইন্টারনেট সেবা বন্ধ করে ক্র্যাকডাউন চালানো হলেও তখন সরকারের পক্ষ থেকে বারবার বলা হচ্ছিল,
@@ -423,7 +423,7 @@
           আর কোনো কথা নাই। এবার একবারে শুরুত্তে দিবা। বলে দিলাম। ... ওরা গলিতে ঘুরতে থাকবে। শুরুতে ওই অল্প জমায়েত
           থাকলে, যা যা করার করতে হবে।”</strong>
       </p>
-      <audio preload="auto"></audio>
+      <audio preload="none"></audio>
     </div>
 
     <p> </p>
@@ -735,77 +735,137 @@
 
   </script>
 
-  <script>
-    (() => {
-      'use strict';
+<script>
+(() => {
+  'use strict';
 
-      function initClip(el) {
-        const audio = el.querySelector('audio');
-        const para = el.querySelector('.soundclip-text23.line23');
-        const trigger = el.querySelector('.audio-wrap23');
-        if (!audio || !para || !trigger) return;
+  // -------- registry + helpers (once) --------
+  const CLIPS = [];
+  function register(el, audio) { CLIPS.push({ el, audio }); }
 
-        // Default UI: PLAY state
-        trigger.classList.remove('playing23');
-        audio.pause();
-        audio.currentTime = 0;
-        trigger.style.setProperty('--pct', '0%');
+  function ensureSrc(el, audio) {
+    if (audio.dataset.loaded === '1') return;
+    const src = el.dataset.audio || el.dataset.src || '';
+    if (!src) return;
+    audio.preload = 'none';        // prevent eager fetching
+    audio.src = src;
+    audio.load();                  // attach without forcing download until play()
+    audio.dataset.loaded = '1';
+  }
 
-        // Use data-audio or data-src
-        audio.src = el.dataset.audio || el.dataset.src || '';
+  function unload(audio) {
+    try {
+      audio.pause();
+      audio.removeAttribute('src'); // drop reference
+      audio.load();                 // fully release buffers
+      delete audio.dataset.loaded;
+    } catch (_) {}
+  }
 
-        // A11y: make text clickable/keyboard-able
-        trigger.setAttribute('role', 'button');
-        trigger.setAttribute('tabindex', '0');
+  // Keep only centered card ±1 neighbour loaded (paused ones only).
+  function keepWindowAround(centerEl) {
+    const order = CLIPS.map(x => x.el);
+    const i0 = order.indexOf(centerEl);
+    CLIPS.forEach(({ el, audio }, i) => {
+      if (Math.abs(i - i0) > 1 && audio.paused && audio.dataset.loaded) unload(audio);
+    });
+  }
 
-        const setProgress = () => {
-          const d = audio.duration || 1;
-          const pct = Math.min(1, Math.max(0, audio.currentTime / d)) * 100;
-          trigger.style.setProperty('--pct', pct.toFixed(3) + '%');
-        };
+  // -------- per-clip setup --------
+  function initClip(el) {
+    const audio = el.querySelector('audio');
+    const trigger = el.querySelector('.audio-wrap23');
+    if (!audio || !trigger) return;
 
-        function tick() {
-          setProgress();
-          if (!audio.paused && !audio.ended) requestAnimationFrame(tick);
-        }
+    // start unloaded
+    unload(audio);
 
-        function play() {
-          if (window.Mute && typeof window.Mute.isMuted === 'function') {
-            audio.muted = window.Mute.isMuted();
-          }
-          audio.play().then(() => {
-            trigger.classList.add('playing23');
-            requestAnimationFrame(tick);
-          }).catch(() => { });
-        }
+    trigger.setAttribute('role', 'button');
+    trigger.setAttribute('tabindex', '0');
+    trigger.classList.remove('playing23');
+    trigger.style.setProperty('--pct', '0%');
 
-        function pause() {
-          audio.pause();
-          trigger.classList.remove('playing23');
-        }
+    function setProgress() {
+      const d = audio.duration || 1;
+      const pct = Math.min(1, Math.max(0, audio.currentTime / d)) * 100;
+      trigger.style.setProperty('--pct', pct.toFixed(3) + '%');
+    }
 
-        function toggle() {
-          if (audio.paused) play(); else pause();
-        }
-
-        trigger.addEventListener('click', toggle);
-        trigger.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-        });
-
-        audio.addEventListener('ended', () => {
-          trigger.classList.remove('playing23');
-          trigger.style.setProperty('--pct', '0%');
-        });
-
-        // Keep progress correct on seek/metadata load
-        audio.addEventListener('timeupdate', setProgress);
-        audio.addEventListener('loadedmetadata', setProgress);
+    function play() {
+      ensureSrc(el, audio); // lazy attach on first interaction/visibility
+      if (window.Mute && typeof window.Mute.isMuted === 'function') {
+        audio.muted = window.Mute.isMuted();
       }
+      audio.play().then(() => {
+        trigger.classList.add('playing23');
+      }).catch(() => {});
+    }
 
-      document.querySelectorAll('.soundclip23.story23.scrollStoryItem23').forEach(initClip);
-    })();
-  </script>
+    function pause() {
+      audio.pause();
+      trigger.classList.remove('playing23');
+    }
+
+    function toggle() {
+      if (!audio.dataset.loaded || audio.paused || audio.ended) play();
+      else pause();
+    }
+
+    trigger.addEventListener('click', toggle);
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+
+    audio.addEventListener('timeupdate', setProgress);
+    audio.addEventListener('loadedmetadata', setProgress);
+    audio.addEventListener('ended', () => {
+      trigger.classList.remove('playing23');
+      trigger.style.setProperty('--pct', '0%');
+      unload(audio); // free immediately after finishing
+    });
+
+    // --- Visibility-driven preload/unload ---
+    // Prefetch when ~60% visible; unload when > ~½ viewport away.
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.target !== el) return;
+
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+          ensureSrc(el, audio); // arm for instant play
+        } else {
+          const r = entry.boundingClientRect;
+          const far = (r.bottom < -0.5 * window.innerHeight) || (r.top > 1.5 * window.innerHeight);
+          if (far && audio.paused && audio.dataset.loaded) unload(audio);
+        }
+      });
+    }, { threshold: [0, 0.6], rootMargin: '20% 0px 20% 0px' });
+    io.observe(el);
+
+    // Keep only center ±1 neighbours warm
+    const centerIO = new IntersectionObserver((entries) => {
+      let best = null, bestDist = Infinity;
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const rect = e.target.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        const dist = Math.abs(mid - (window.innerHeight / 2));
+        if (dist < bestDist) { bestDist = dist; best = e.target; }
+      });
+      if (best) keepWindowAround(best);
+    }, { threshold: [0.6], rootMargin: '-40% 0px -40% 0px' });
+    centerIO.observe(el);
+
+    register(el, audio);
+  }
+
+  // -------- boot --------
+  document
+    .querySelectorAll('.soundclip23.story23.scrollStoryItem23')
+    .forEach(initClip);
+})();
+</script>
+
+
 
   <script>
     (function () {

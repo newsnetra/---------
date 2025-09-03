@@ -264,7 +264,7 @@ background-color: #000;
   }
 
     .lede {
-            margin: 8vh 0 10vh;
+                    margin: 8vh 2vh 10vh;
         }
 
         .dialogue {
@@ -751,4 +751,41 @@ background: linear-gradient(120deg, rgba(255, 236, 119, 0.96) 0%, rgba(255, 236,
 .inu div:nth-child(2) {
     background: linear-gradient(120deg, rgba(255, 236, 119, 0.96) 0%, rgba(255, 236, 119, 0.96) 100%);
     margin: 50px 0px;
+}
+
+
+
+.scroll-down{
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  padding: .55rem .9rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(255, 236, 119, 0.96);
+  backdrop-filter: blur(6px);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+  animation: scroll-bounce 1.6s infinite;
+}
+
+.scroll-down.is-hidden{
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+}
+
+@keyframes scroll-bounce{
+  0%,20%,50%,80%,100%{ transform: translate(-50%,0); }
+  40%{ transform: translate(-50%,6px); }
+  60%{ transform: translate(-50%,3px); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .scroll-down{ animation: none; }
 }

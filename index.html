@@ -970,39 +970,47 @@
     })();
   </script>
 
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('scroll-down-btn');
   const header = document.querySelector('header');
-  if(!btn || !header) return;
+  if (!btn || !header) return;
 
-  // Nudge scroll: a small step so users don’t skip content
+  // Small nudge on click (don’t skip content)
   btn.addEventListener('click', () => {
     const step = Math.max(120, Math.min(window.innerHeight * 0.25, 320));
     window.scrollBy({ top: step, behavior: 'smooth' });
   });
 
-  // Show until header appears; re-show when user scrolls back above it
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        btn.classList.add('is-hidden');
-      } else {
-        btn.classList.remove('is-hidden');
-      }
-    });
-  }, {
-    threshold: 0.05,
-    /* start hiding a little before the header fully arrives */
-    rootMargin: '0px 0px -15% 0px'
-  });
+  let headerTop = 0, headerHeight = 0;
 
-  io.observe(header);
+  function measure() {
+    const r = header.getBoundingClientRect();
+    headerTop = r.top + window.scrollY;          // absolute page Y of header top
+    headerHeight = header.offsetHeight || r.height;
+  }
+
+  function update() {
+    const y = window.scrollY;
+
+    // Show only when ABOVE the header top; hide at/after header
+    if (y < headerTop - 1) {
+      btn.classList.remove('is-hidden');
+    } else {
+      btn.classList.add('is-hidden');
+    }
+  }
+
+  // Keep measurements fresh (fonts/images can shift layout)
+  measure();
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', () => { measure(); update(); });
+
+  // Re-measure after fonts/images settle
+  window.setTimeout(() => { measure(); update(); }, 200);
 });
 </script>
-
-
 
 </body>
 

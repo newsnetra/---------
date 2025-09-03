@@ -122,7 +122,7 @@ background-color: #000;
         gap: .5rem;
         border: 0;
         background: none;
-        color: yellow;
+        color: rgba(255, 236, 119, 0.96);
         font-family: 'AlinurTatsama';
         cursor: pointer;
         transition: color .15s ease, opacity .15s ease;

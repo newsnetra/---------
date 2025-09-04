@@ -35,6 +35,8 @@
   <!-- Social Profiles -->
   <link rel="me" href="https://x.com/NetraNews">
   <link rel="me" href="https://www.facebook.com/newsnetra/">
+<link rel="preload" href="./assets/audio/sobguloke-arrest.mp3"
+      as="audio" type="audio/mpeg" crossorigin>
 
   <!-- Styles & Fonts -->
   <link rel="stylesheet" href="./assets/main.css">
@@ -495,6 +497,71 @@
 
     </div>
   </div>
+
+
+  <script>
+/* Arm first clip + warm the next two (metadata only) */
+(function () {
+  function getClipEls() {
+    return Array.from(document.querySelectorAll('.soundclip.story.scrollStoryItem'));
+  }
+  function srcOf(el) { return el?.dataset?.src || el?.dataset?.clip || ''; }
+
+  function armFirst() {
+    const global = document.getElementById('global-audio-player');
+    const clips = getClipEls();
+    if (!global || !clips.length) return;
+
+    // 1) Arm the first clip for instant start
+    const first = clips[0];
+    const firstSrc = srcOf(first);
+    if (firstSrc) {
+      global.preload = 'metadata';
+      try {
+        const abs = new URL(firstSrc, location.href).href;
+        if (global.src !== abs) {
+          global.src = firstSrc;
+          global.load(); // grabs headers/duration very quickly
+        }
+      } catch (_) {}
+      first.dataset.armed = '1';
+    }
+
+    // 2) Warm the next TWO clips lightly (metadata only), on idle/microtask
+    const nextTwo = clips.slice(1, 3).map(srcOf).filter(Boolean);
+    const warmers = [];
+
+    function warm(src) {
+      const a = new Audio();
+      a.preload = 'metadata';         // avoids full download
+      a.src = src;
+      // Keep a reference so GC doesn't kill the request mid-flight
+      warmers.push(a);
+      a.load();
+      // After we have metadata, we can let it be GC'd later
+      a.addEventListener('loadedmetadata', () => {
+        // small delay to avoid doing work during first paint
+        setTimeout(() => {
+          const idx = warmers.indexOf(a);
+          if (idx > -1) warmers.splice(idx, 1);
+        }, 1500);
+      }, { once: true });
+    }
+
+    const schedule = window.requestIdleCallback || ((fn) => setTimeout(fn, 0));
+    schedule(() => { nextTwo.forEach(warm); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState !== 'loading') armFirst();
+    }, { once: true });
+  } else {
+    armFirst();
+  }
+})();
+</script>
+
 
 
   <script>

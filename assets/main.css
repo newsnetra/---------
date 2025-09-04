@@ -219,6 +219,7 @@ background-color: #000;
         margin-bottom: .25rem;
     }
 
+
     header .description {
         margin-bottom: .75rem;
         color: #222;
@@ -683,7 +684,7 @@ a:hover {
 
 
 
-.section-label a, .author a {
+.section-label a {
     text-decoration: none;
 }
 .brush, .section-label {
@@ -788,4 +789,35 @@ background: linear-gradient(120deg, rgba(255, 236, 119, 0.96) 0%, rgba(255, 236,
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce){
   .scroll-down{ animation: none; }
+}
+
+.hero-image {
+    background-color: #fff;
+}
+.hero-image img {
+    max-width: 100vw;
+    width: 100%;
+    display: block;
+    padding-bottom: 40px;
+    height: auto;
+}
+
+
+.byarea {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;     /* centers vertically */
+  gap: 0.5rem;
+  width: 100%;             /* take full width */
+  text-align: center;
+  padding-top: 20px;
+}
+
+.byarea p {
+  margin: 0;
+
+}
+
+.byarea .separator {
+  color: #888;
 }
